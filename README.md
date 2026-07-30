@@ -9,22 +9,22 @@ The **Scalaxy CLI** is the official command-line interface for [Scalaxy Metal](h
 
 ## Install
 
-The CLI is a single static binary published to [GitHub Releases](https://github.com/scalaxy/cli/releases/latest). Every release ships five platform archives plus a `checksums.txt` file containing the SHA-256 digest of each archive.
+The CLI is a single static binary published to [GitHub Releases](https://github.com/scalaxycom/cli/releases/latest). Every release ships five platform archives plus a `checksums.txt` file containing the SHA-256 digest of each archive.
 
 Each archive filename embeds the release version, so the snippets below first read `checksums.txt` to discover the exact current filename for your platform, then download and verify that archive. This keeps every command working across releases without you ever editing a version number.
 
 The download and checksum base URL is always:
 
 ```
-https://github.com/scalaxy/cli/releases/latest/download/
+https://github.com/scalaxycom/cli/releases/latest/download/
 ```
 
 ### Linux (amd64)
 
 ```bash
-ARCHIVE=$(curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep linux_amd64 | awk '{print $2}')
-curl -sSL "https://github.com/scalaxy/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
-curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep linux_amd64 | sha256sum -c -
+ARCHIVE=$(curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep linux_amd64 | awk '{print $2}')
+curl -sSL "https://github.com/scalaxycom/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
+curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep linux_amd64 | sha256sum -c -
 tar -xzf "$ARCHIVE" scalaxy
 chmod +x scalaxy
 sudo mv scalaxy /usr/local/bin/
@@ -33,9 +33,9 @@ sudo mv scalaxy /usr/local/bin/
 ### Linux (arm64)
 
 ```bash
-ARCHIVE=$(curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep linux_arm64 | awk '{print $2}')
-curl -sSL "https://github.com/scalaxy/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
-curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep linux_arm64 | sha256sum -c -
+ARCHIVE=$(curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep linux_arm64 | awk '{print $2}')
+curl -sSL "https://github.com/scalaxycom/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
+curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep linux_arm64 | sha256sum -c -
 tar -xzf "$ARCHIVE" scalaxy
 chmod +x scalaxy
 sudo mv scalaxy /usr/local/bin/
@@ -44,9 +44,9 @@ sudo mv scalaxy /usr/local/bin/
 ### macOS — Apple Silicon (darwin/arm64)
 
 ```bash
-ARCHIVE=$(curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep darwin_arm64 | awk '{print $2}')
-curl -sSL "https://github.com/scalaxy/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
-curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep darwin_arm64 | sha256sum -c -
+ARCHIVE=$(curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep darwin_arm64 | awk '{print $2}')
+curl -sSL "https://github.com/scalaxycom/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
+curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep darwin_arm64 | sha256sum -c -
 tar -xzf "$ARCHIVE" scalaxy
 chmod +x scalaxy
 sudo mv scalaxy /usr/local/bin/
@@ -57,9 +57,9 @@ sudo mv scalaxy /usr/local/bin/
 ### macOS — Intel (darwin/amd64)
 
 ```bash
-ARCHIVE=$(curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep darwin_amd64 | awk '{print $2}')
-curl -sSL "https://github.com/scalaxy/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
-curl -sSL https://github.com/scalaxy/cli/releases/latest/download/checksums.txt | grep darwin_amd64 | sha256sum -c -
+ARCHIVE=$(curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep darwin_amd64 | awk '{print $2}')
+curl -sSL "https://github.com/scalaxycom/cli/releases/latest/download/$ARCHIVE" -o "$ARCHIVE"
+curl -sSL https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt | grep darwin_amd64 | sha256sum -c -
 tar -xzf "$ARCHIVE" scalaxy
 chmod +x scalaxy
 sudo mv scalaxy /usr/local/bin/
@@ -72,10 +72,10 @@ sudo mv scalaxy /usr/local/bin/
 PowerShell:
 
 ```powershell
-$Checksums = (Invoke-WebRequest -Uri "https://github.com/scalaxy/cli/releases/latest/download/checksums.txt" -UseBasicParsing).Content
+$Checksums = (Invoke-WebRequest -Uri "https://github.com/scalaxycom/cli/releases/latest/download/checksums.txt" -UseBasicParsing).Content
 $Line = ($Checksums -split "`n" | Select-String "windows_amd64")
 $Archive = ($Line -split '\s+')[1]
-Invoke-WebRequest -Uri "https://github.com/scalaxy/cli/releases/latest/download/$Archive" -OutFile $Archive
+Invoke-WebRequest -Uri "https://github.com/scalaxycom/cli/releases/latest/download/$Archive" -OutFile $Archive
 # Verify the SHA-256 hash matches the one printed above:
 (Get-FileHash $Archive -Algorithm SHA256).Hash.ToLower()
 Expand-Archive -Path $Archive -DestinationPath scalaxy-bin
@@ -120,7 +120,7 @@ The CLI supports three authentication methods. Credentials are resolved in this 
 - **User token** — a personal API key (`--api-key <key>` or `SCALAXY_API_KEY=<key>`) scoped to your account, with `read_only` or `read_write` access. Manage your keys from the dashboard or via `scalaxy api-keys`.
 - **Organization token** — an org-scoped API key (`--api-key <key>` or `SCALAXY_API_KEY=<key>`) with granular `resource:action` permissions and no account context. Pass the target organization with `--org` or `SCALAXY_ORG` when needed.
 
-For the full guide, see the [authentication documentation](https://docs.scalaxy.cloud/cli/auth).
+For the full guide, see the [authentication documentation](https://docs.scalaxy.com/cli/auth).
 
 ## Supported Platforms
 
