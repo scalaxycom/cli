@@ -99,11 +99,29 @@ scalaxy version
 # 1. Authenticate with your Scalaxy account (opens a browser-based login)
 scalaxy auth login
 
-# 2. List your servers
+# 2. Find the project that owns your servers (add --org <org-id> if prompted for an organization)
+scalaxy projects list
+
+# 3. Select a project — pick ONE of the following:
+scalaxy config set default-project <project-id>   # persist it as the default (or: scalaxy projects switch <project-id>)
+export SCALAXY_PROJECT=<project-id>               # set it for the current shell session
+# ...or pass --project <project-id> on each command
+
+# 4. List your servers
 scalaxy servers list
+# Equivalent one-off form without a stored default:
+scalaxy servers list --project <project-id>
 ```
 
-Common next steps:
+Server commands always run inside a project. The CLI resolves the project in this order:
+
+1. the `--project <project-id>` flag;
+2. the `SCALAXY_PROJECT` environment variable;
+3. the `default_project` config key (set with `scalaxy config set default-project <project-id>` or `scalaxy projects switch <project-id>`; `default_project` is accepted as the key name too).
+
+If none of these is set, server commands exit with code `1` and the `project_required` error.
+
+Common next steps (these use the project selected above; add `--project <project-id>` to target a different one):
 
 ```bash
 scalaxy servers create --plan <plan> --region <region> --os <os> --hostname my-server
