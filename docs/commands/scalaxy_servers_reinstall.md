@@ -1,0 +1,35 @@
+## scalaxy servers reinstall
+
+Reinstall OS on a server
+
+```
+scalaxy servers reinstall <server-id> [flags]
+```
+
+### Options
+
+```
+  -h, --help                  help for reinstall
+      --os string             OS slug to install
+      --ssh-key stringArray   SSH key ID to install (repeatable)
+      --timeout int           Timeout in seconds for --wait (default 600)
+      --wait                  Wait for the server to become active
+```
+
+### Options inherited from parent commands
+
+```
+      --api-key string   API key for authentication
+      --debug            Enable debug mode
+      --no-color         Disable colored output
+      --org string       Organization context override
+  -o, --output string    Output format: table, json, yaml (default "table")
+      --project string   Project context override
+  -q, --quiet            Suppress non-essential output
+  -y, --yes              Skip confirmation prompts
+```
+
+### SEE ALSO
+
+* [scalaxy servers](./scalaxy_servers.md)	 - Manage servers
+

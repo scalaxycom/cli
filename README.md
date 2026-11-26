@@ -135,10 +135,10 @@ scalaxy auth status
 The CLI supports three authentication methods. Credentials are resolved in this order: the `--api-key` flag → the `SCALAXY_API_KEY` environment variable → a stored interactive session.
 
 - **Interactive session** — run `scalaxy auth login` to sign in through a browser-based flow. The resulting session token is stored locally in a credentials file with `0600` permissions. Use `scalaxy auth status` to inspect the active identity and `scalaxy auth logout` to revoke it.
-- **User token** — a personal API key (`--api-key <key>` or `SCALAXY_API_KEY=<key>`) scoped to your account, with `read_only` or `read_write` access. Manage your keys from the dashboard or via `scalaxy api-keys`.
+- **User token** — a personal API key (`--api-key <key>` or `SCALAXY_API_KEY=<key>`) scoped to your account, with `read_only` or `read_write` access. Manage your keys from the dashboard.
 - **Organization token** — an org-scoped API key (`--api-key <key>` or `SCALAXY_API_KEY=<key>`) with granular `resource:action` permissions and no account context. Pass the target organization with `--org` or `SCALAXY_ORG` when needed.
 
-For the full guide, see the [authentication documentation](https://docs.scalaxy.com/cli/auth).
+For the full guide, see the [authentication documentation](./docs/commands/scalaxy_auth.md).
 
 ## Supported Platforms
 
@@ -156,9 +156,7 @@ Each binary is self-contained with no runtime dependencies.
 
 ## Documentation
 
-Full CLI documentation — command reference, configuration, output formats, and examples — is at <https://docs.scalaxy.cloud/cli>.
-
-For contributors and release operators, see [`CONTRIBUTING.md`](./CONTRIBUTING.md) (development + release workflow + ops runbook) and [`docs/ops/release-pipeline.md`](./docs/ops/release-pipeline.md) (release-pipeline prerequisites: GitLab CI variables, GitHub distribution repo setup, token rotation).
+Every command, subcommand, and flag is documented in the [command reference](./docs/commands/README.md).
 
 ## License
 
